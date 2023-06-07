@@ -25,7 +25,7 @@ public abstract class CreatureBehavior : ScriptableObject
         }
         else
         {
-            self.ActDelayCounter--;
+            self.ActDelayCounter -= Time.deltaTime;
             return false;
         }
     }

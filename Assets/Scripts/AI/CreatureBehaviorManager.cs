@@ -16,7 +16,7 @@ public class CreatureBehaviorManager : MonoBehaviour
     {
         if (data.CurrentBehavior.IsReadyToAct(data))
         {
-            data.CurrentBehavior.Act(data);
+            data.ActivateBehavior();
         }
     }
 }

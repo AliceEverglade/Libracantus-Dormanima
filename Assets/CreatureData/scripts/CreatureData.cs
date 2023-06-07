@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public abstract class CreatureData : ScriptableObject
 {
@@ -11,12 +12,7 @@ public abstract class CreatureData : ScriptableObject
     public GameObject CreatureReference;
 
     [Header("AI")]
-    public List<CreatureBehavior> Behaviors;
-    public float ActDelayCounter;
-    [Range(0,10)]
-    public float AISpeed; // won't do anything when it's 0
-
-    private CreatureBehavior currentBehavior;
+    [SerializeField] private CreatureBehavior currentBehavior;
     public CreatureBehavior CurrentBehavior
     {
         get
@@ -25,13 +21,19 @@ public abstract class CreatureData : ScriptableObject
         }
         set
         {
-            if(currentBehavior != value)
+            if (currentBehavior != value)
             {
                 ActDelayCounter = 0;
                 currentBehavior = value;
             }
         }
     }
+    public List<BehaviorData> Behaviors;
+    public float ActDelayCounter;
+    [Range(0,10)]
+    public float AISpeed; // won't do anything when it's 0
+
+    
 
     [Header("ComponentReferences")]
     public AnimatorData animData;
@@ -60,9 +62,19 @@ public abstract class CreatureData : ScriptableObject
     public enum AnimationStates
     {
         Idle,
+        IdleAction1,
         Walk,
         Hang,
         LayDown,
+    }
+
+    public enum BehaviorStates
+    {
+        Wander,
+        GoTo,
+        Idle,
+        Grabbed,
+
     }
     
 
@@ -74,10 +86,18 @@ public abstract class CreatureData : ScriptableObject
     public void Spawn(Vector3 pos)
     {
         CreatureReference = Instantiate(Prefab,pos, Quaternion.identity);
+        currentBehavior = Behaviors[0].Behavior;
         SetData();
     }
     public void ActivateBehavior()
     {
         CurrentBehavior.Act(this);
     }
+}
+
+[Serializable]
+public class BehaviorData
+{
+    public CreatureData.BehaviorStates BehaviorState;
+    public CreatureBehavior Behavior;
 }

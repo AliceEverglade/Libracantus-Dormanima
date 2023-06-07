@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68910ed6cba0fa459d6ee98104111c7, type: 3}
   m_Name: Chibi_1
   m_EditorClassIdentifier: 
-  description: Animator for the base Chibi model
+  description: 'Basic Chibi Model
+
+'
   Animator: {fileID: 0}
   Armature: {fileID: 0}
-  Animations:
-  - State: 0
-    Animation: {fileID: 0}
+  Animations: []

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - {fileID: 11400000, guid: 9e6def827e36c2647a352cf043e32430, type: 2}
+  ActDelay: 5
   range: 15
   randomDestination: {fileID: 11400000, guid: 5290bde03120d394e857758e55508eb4, type: 2}

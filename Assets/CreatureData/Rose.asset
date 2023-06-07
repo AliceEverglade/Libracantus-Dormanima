@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12a394fd9da8a6a4b875dce62e67c22c, type: 3}
-  m_Name: Aeisha
+  m_Name: Rose
   m_EditorClassIdentifier: 
-  CreatureName: Aeisha
-  Prefab: {fileID: 657217395805496652, guid: 64ae2dc55c85bbc4296a2aeddef668c6, type: 3}
+  CreatureName: Rose
+  Prefab: {fileID: 7702487133583334644, guid: 5449bc9d38e83e14a8010265eb6d6e61, type: 3}
   CreatureReference: {fileID: 0}
   Behaviors:
   - {fileID: 11400000, guid: 3be52c60899dc474085cf92c742258ae, type: 2}
-  ActDelayCounter: 0
-  AISpeed: 0
-  animData: {fileID: 0}
-  Speed: 10
+  ActDelayCounter: 4.442918
+  AISpeed: 1
+  currentBehavior: {fileID: 11400000, guid: 3be52c60899dc474085cf92c742258ae, type: 2}
+  animData: {fileID: 11400000, guid: db01a22d25bc45343bd38203a672810e, type: 2}
+  Speed: 5
