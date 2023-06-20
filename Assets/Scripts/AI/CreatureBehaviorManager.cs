@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreatureBehaviorManager : MonoBehaviour
 {
-    [SerializeField] private CreatureData data;
+    public CreatureData data;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +14,7 @@ public class CreatureBehaviorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (data.CurrentBehavior.IsReadyToAct(data))
+        if (data.CurrentBehavior.IsReadyToAct(data) && data.AnimState != CreatureData.AnimationStates.Hang)
         {
             data.ActivateBehavior();
         }

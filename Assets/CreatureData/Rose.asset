@@ -15,10 +15,11 @@ MonoBehaviour:
   CreatureName: Rose
   Prefab: {fileID: 7702487133583334644, guid: 5449bc9d38e83e14a8010265eb6d6e61, type: 3}
   CreatureReference: {fileID: 0}
-  Behaviors:
-  - {fileID: 11400000, guid: 3be52c60899dc474085cf92c742258ae, type: 2}
-  ActDelayCounter: 4.442918
-  AISpeed: 1
   currentBehavior: {fileID: 11400000, guid: 3be52c60899dc474085cf92c742258ae, type: 2}
+  Behaviors:
+  - BehaviorState: 0
+    Behavior: {fileID: 11400000, guid: 3be52c60899dc474085cf92c742258ae, type: 2}
+  ActDelayCounter: 0.13548678
+  AISpeed: 1
   animData: {fileID: 11400000, guid: db01a22d25bc45343bd38203a672810e, type: 2}
   Speed: 5
