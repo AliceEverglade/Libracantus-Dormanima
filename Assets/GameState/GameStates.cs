@@ -1,66 +1,62 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 [Serializable]
 public class GameStates : MonoBehaviour
 {
-    [SerializeField] private List<GameState> GameStateList;
-    [SerializeField] private StateNames stateName;
-    public StateNames StateName
+    [SerializeField] private GameState state;
+
+    [SerializeField] private ARPlaneManager planeManager;
+    [SerializeField] private PlaneSelector planeSelector;
+    [SerializeField] private GameObject scanUI;
+    [SerializeField] private GameObject playUI;
+    public GameState State
     {
-        get => stateName;
+        get => state;
         set
         {
-            if (stateName != value)
+            if (state != value)
             {
-                SetState(value);
-                stateName = value;
+                switch (value)
+                {
+                    case GameState.Scan:
+                        setScanState();
+                        break;
+                    case GameState.Play:
+                        SetPlayState();
+                        break;
+                }
+                state = value;
             }
         }
     }
-    public enum StateNames
+    public enum GameState
     {
         Scan,
-        Play,
-        Pause,
-        Shop
+        Play
     }
 
-    public void SetState(StateNames state)
+    private void Start()
     {
-        foreach(GameState gs in GameStateList)
-        {
-            gs.SetProperties(false);
-        }
-        foreach(GameState gs in GameStateList)
-        {
-            if(gs.State == state)
-            {
-                gs.SetProperties(true);
-            }
-        }
+        setScanState();
     }
-}
 
-[Serializable]
-public class GameState
-{
-    public string Name;
-    public GameStates.StateNames State;
-    public List<GameObject> ObjectProperties;
-    public List<Behaviour> ScriptProperties;
-
-    public void SetProperties(bool on)
+    public void SetPlayState()
     {
-        foreach(GameObject obj in ObjectProperties)
-        {
-            obj.SetActive(on);
-        }
-        foreach(Behaviour script in ScriptProperties)
-        {
-            script.enabled = on;
-        }
+        planeManager.enabled = false;
+        scanUI.SetActive(false);
+        playUI.SetActive(true);
     }
+
+    public void setScanState()
+    {
+        planeManager.enabled = true;
+        scanUI.SetActive(true);
+        playUI.SetActive(false);
+    }
+    
 }
